@@ -1,0 +1,271 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Happy Birthday My Bachu 💗</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+ font-family:'Segoe UI',sans-serif;
+ color:white;
+ background:linear-gradient(135deg,#180b35,#54215e,#a33b76);
+ min-height:100vh;
+ overflow-x:hidden;
+ transition:background 1s;
+}
+header{
+ position:sticky;top:0;z-index:10;
+ background:#160b2bd9;
+ backdrop-filter:blur(12px);
+ padding:17px;
+ display:flex;justify-content:center;gap:22px;flex-wrap:wrap;
+}
+header a{color:white;text-decoration:none;font-weight:bold}
+header a:hover{color:#ff9fd5}
+section{text-align:center;padding:75px 18px;min-height:70vh}
+h1{font-size:clamp(35px,7vw,65px);color:#ffb4df}
+h2{color:#ffb4df;margin-bottom:25px;font-size:32px}
+p{line-height:1.9;max-width:750px;margin:15px auto}
+button{
+ background:linear-gradient(90deg,#ed66b5,#9d6bff);
+ color:white;border:0;padding:13px 22px;
+ border-radius:30px;font-size:15px;cursor:pointer;
+ margin:8px;transition:.3s
+}
+button:hover{transform:scale(1.08);box-shadow:0 0 20px #ff8ad6}
+.hero{padding-top:110px}
+.heart{
+ position:fixed;bottom:-30px;z-index:-1;
+ animation:float 9s linear infinite;
+ pointer-events:none;
+}
+@keyframes float{
+ to{transform:translateY(-110vh) rotate(360deg);opacity:0}
+}
+.card{
+ background:#ffffff18;border:1px solid #ffffff30;
+ padding:25px;border-radius:22px;
+ max-width:800px;margin:20px auto;
+ backdrop-filter:blur(12px);
+}
+.gallery{
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+ gap:18px;max-width:950px;margin:auto
+}
+.gallery img{
+ width:100%;height:260px;object-fit:cover;
+ border-radius:18px;border:2px solid #ffaddd;
+ cursor:pointer;transition:.4s
+}
+.gallery img:hover{transform:scale(1.04)}
+#lightbox{
+ display:none;position:fixed;inset:0;background:#000e;
+ z-index:30;align-items:center;justify-content:center;
+}
+#lightbox img{max-width:90%;max-height:85%;border-radius:15px}
+#musicControl{
+ position:fixed;right:18px;bottom:18px;z-index:20;
+ background:#291344;border:1px solid #ff9cdb;
+ padding:14px;border-radius:20px;
+ box-shadow:0 0 20px #ff70ca;
+}
+#musicControl input{width:100px;vertical-align:middle}
+#cake{font-size:100px;cursor:pointer;transition:.4s}
+#cake:hover{transform:scale(1.1)}
+footer{padding:30px;text-align:center;background:#160b2b}
+select{padding:10px;border-radius:12px;margin:10px}
+</style>
+</head>
+
+<body>
+
+<header>
+<a href="#home">🏠 Home</a>
+<a href="#about">💌 About Her</a>
+<a href="#cakeSection">🎂 Cake</a>
+<a href="#gallerySection">📸 Memories</a>
+<a href="#surprise">🎁 Surprise</a>
+</header>
+
+<section class="hero" id="home">
+<h1>Happy Birthday My Bachu 💗</h1>
+<p>To my Pudku, my Darling, my Sweetheart, my Everything and my Whole World. 🥹🌷</p>
+<p>A little magical world created especially for you.</p>
+<button onclick="startMusic()">Open Your Surprise 💝</button>
+</section>
+
+<section id="about">
+<h2>💌 About My Bachu</h2>
+<div class="card">
+<p>
+My sweetest Bachu, today is your special day, and I want you to know
+how precious you are. You bring happiness into ordinary moments and
+make life feel more beautiful. Your smile is a little sunshine,
+your laughter is a lovely melody, and your presence makes memories
+worth keeping. 💗
+</p>
+<p>
+I hope your birthday is filled with beautiful surprises, peaceful
+moments, endless happiness and everything your heart wishes for.
+Never forget how special you are. Keep smiling, keep shining and
+keep being the wonderful person you are. 🧸🌷✨
+</p>
+<p>
+Happy Birthday, my Pudku! May this new chapter bring you countless
+reasons to smile and wonderful adventures to remember. I wish you
+all the happiness in the world. 💞
+</p>
+</div>
+</section>
+
+<section id="cakeSection">
+<h2>🎂 Birthday Cake</h2>
+<div id="cake" onclick="cutCake()">🎂</div>
+<p id="cakeMessage">Click the cake to make a wish! ✨</p>
+<button onclick="cutCake()">Make a Wish 💗</button>
+</section>
+
+<section id="gallerySection">
+<h2>📸 Our Beautiful Memories</h2>
+<p>Every picture holds a little memory. 💗</p>
+
+<div class="gallery">
+<img src="images/photo1.jpg" alt="Memory 1" onclick="openPhoto(this)">
+<img src="images/photo2.jpg" alt="Memory 2" onclick="openPhoto(this)">
+<img src="images/photo3.jpg" alt="Memory 3" onclick="openPhoto(this)">
+<img src="images/photo4.jpg" alt="Memory 4" onclick="openPhoto(this)">
+</div>
+</section>
+
+<section id="surprise">
+<h2>🎁 One Last Surprise</h2>
+<div class="card">
+<h1>💗 You Are Special 💗</h1>
+<p>May your day be as beautiful as your smile and your future as bright as the stars. Happy Birthday, my Bachu! 🥹</p>
+<button onclick="celebrate()">Celebrate! 🎉</button>
+</div>
+</section>
+
+<footer>
+Made with endless love for my Pudku Bachu 💗
+</footer>
+
+<!-- Music -->
+<div id="musicControl">
+<div>🎵 Birthday Music</div>
+<button id="playButton" onclick="toggleMusic()">▶ Play</button>
+<br>
+<label>Volume </label>
+<input type="range" min="0" max="1" step=".01"
+value=".4" id="volume">
+</div>
+
+<audio id="music" loop preload="auto">
+<source src="music/birthday.mp3" type="audio/mpeg">
+</audio>
+
+<div id="lightbox" onclick="closePhoto()">
+<img id="largePhoto" alt="Large memory">
+</div>
+
+<script>
+const music=document.getElementById("music");
+const playButton=document.getElementById("playButton");
+const volume=document.getElementById("volume");
+
+music.volume=.4;
+
+async function startMusic(){
+ try{
+  await music.play();
+  playButton.textContent="⏸ Pause";
+ }catch(error){
+  playButton.textContent="▶ Tap to Play";
+ }
+}
+
+function toggleMusic(){
+ if(music.paused)startMusic();
+ else{
+  music.pause();
+  playButton.textContent="▶ Play";
+ }
+}
+
+volume.addEventListener("input",()=>{
+ music.volume=Number(volume.value);
+});
+
+// Attempt autoplay; browsers may block it.
+window.addEventListener("load",()=>{
+ startMusic();
+});
+
+// Start after the first visitor interaction if autoplay was blocked.
+["click","keydown","touchstart"].forEach(event=>{
+ document.addEventListener(event,()=>{
+  if(music.paused)startMusic();
+ },{once:true});
+});
+
+function openPhoto(img){
+ document.getElementById("largePhoto").src=img.src;
+ document.getElementById("lightbox").style.display="flex";
+}
+function closePhoto(){
+ document.getElementById("lightbox").style.display="none";
+}
+
+function cutCake(){
+ document.getElementById("cake").textContent="🎉🎂💗";
+ document.getElementById("cakeMessage").textContent=
+ "Your wish deserves to come true! Happy Birthday! 🥹";
+}
+
+function celebrate(){
+ for(let i=0;i<35;i++){
+  const heart=document.createElement("div");
+  heart.textContent=["💗","💖","🎉","🌷","✨"][Math.floor(Math.random()*5)];
+  heart.style.position="fixed";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.top=Math.random()*100+"vh";
+  heart.style.fontSize="25px";
+  heart.style.zIndex="50";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),2500);
+ }
+ alert("HAPPY BIRTHDAY MY BACHU! 💗🎂");
+}
+
+// Background selector
+const themes=[
+ "linear-gradient(135deg,#180b35,#54215e,#a33b76)",
+ "linear-gradient(135deg,#080b30,#292c77,#8e44ad)",
+ "linear-gradient(135deg,#ffb6d9,#b88cff,#ffe0f0)",
+ "linear-gradient(135deg,#07152e,#123c65,#54215e)"
+];
+let themeIndex=0;
+document.addEventListener("keydown",e=>{
+ if(e.key==="b"||e.key==="B"){
+  themeIndex=(themeIndex+1)%themes.length;
+  document.body.style.background=themes[themeIndex];
+ }
+});
+
+// Floating hearts
+setInterval(()=>{
+ const heart=document.createElement("div");
+ heart.className="heart";
+ heart.textContent=["💗","💕","✨","🌸"][Math.floor(Math.random()*4)];
+ heart.style.left=Math.random()*100+"vw";
+ heart.style.fontSize=(15+Math.random()*20)+"px";
+ document.body.appendChild(heart);
+ setTimeout(()=>heart.remove(),9000);
+},650);
+</script>
+
+</body>
+</html>
